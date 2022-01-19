@@ -6,6 +6,7 @@ function getSearchVal(e) {
   console.log(formInput);
   giphySearch(formInput);
 }
+
 function randomNumberGenerator() {
   return Math.floor(Math.random() * 50);
 }
@@ -19,6 +20,11 @@ async function giphySearch(formInput) {
     `http://api.giphy.com/v1/gifs/search?q=${formInput}&api_key=MhAodEJIJxQMxW9XqxKjyXfNYdLoOIym`
   );
   console.log("giphy: ", giphy);
+
+  console.log("giphy.data: ", giphy.data.data[0].url);
+
+  $(".gif-container").append($("<img>").attr("src", `${giphy.data.data[0].url}`));
+
 }
 
 $(".submit-search-btn").on("click", getSearchVal);
